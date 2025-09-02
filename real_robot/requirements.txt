@@ -1,0 +1,13 @@
+gym==0.26.2
+pynput==1.7.7
+opencv-python==4.9.0.80
+
+# # Required for d3il
+
+wandb
+einops
+scikit-learn
+termcolor
+matplotlib
+ipython
+gymnasium==0.29.1

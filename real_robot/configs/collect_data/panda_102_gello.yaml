@@ -1,0 +1,44 @@
+# @package _global_
+defaults:
+  - /hardware/robot/gello/arm@teleoperation_pairs.0.leader_robot.arm: gello_FT94ER3L
+  - /hardware/robot/gello/gripper@teleoperation_pairs.0.leader_robot.gripper: gello_FT94ER3L
+  - /hardware/robot/franka_panda/arm@teleoperation_pairs.0.follower_robot.arm: panda_102
+  - /hardware/robot/franka_panda/hand@teleoperation_pairs.0.follower_robot.gripper: panda_102
+  - /hardware/camera/depthai@continuous_devices.0: 102_top_cam
+  - /hardware/camera/depthai@continuous_devices.1: 102_side_cam
+  - _self_
+
+# General Data Collection Settings
+data_dir: "/home/irl-admin/gello/data"
+teleoperation_type: "JOINT_SPACE"  # TODO maybe remove after integrating new appl_commands
+capture_interval: 0.05  # 20Hz robot state capture
+initial_robot_sync: true
+
+# Teleoperation pairs of leader and follower
+teleoperation_pairs:
+  "0":
+    _target_: collect_data.TeleoperationPair
+    leader_robot: 
+      _target_: collect_data.Robot
+      name: "Gello leader"
+    follower_robot:
+      _target_: collect_data.Robot
+      name: "Panda 102 follower"
+      arm:
+        control_type:
+          _target_: real_robot_env.robot.hardware_franka.ControlType.__getitem__
+          name: IMITATION_CONTROL
+        waypoint_recovery: true  # Makes the panda catch up to gello after exceeding the limits
+
+# Devices
+continuous_devices:
+  "0":
+    _target_: real_robot_env.robot.hardware_cameras.AsynchronousCamera
+    camera_class:
+      _target_: hydra.utils.get_class
+      path: real_robot_env.robot.hardware_depthai.DepthAI
+  "1":
+    _target_: real_robot_env.robot.hardware_cameras.AsynchronousCamera
+    camera_class:
+      _target_: hydra.utils.get_class
+      path: real_robot_env.robot.hardware_depthai.DepthAI

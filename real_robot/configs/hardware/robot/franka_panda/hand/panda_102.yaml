@@ -1,0 +1,4 @@
+_target_: real_robot_env.robot.hardware_frankahand.FrankaHand
+name: "Panda 102 Gripper"
+ip_address: "10.10.10.11" #irl
+port: 50054

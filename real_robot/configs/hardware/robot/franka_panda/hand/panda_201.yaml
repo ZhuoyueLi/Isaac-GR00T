@@ -1,0 +1,4 @@
+_target_: real_robot_env.robot.hardware_frankahand.FrankaHand
+name: "Panda 201 Gripper"
+ip_address: "141.3.53.63"
+port: 50052

@@ -1,0 +1,55 @@
+# @package _global_
+defaults:
+  - /hardware/robot/franka_panda/arm@teleoperation_pairs.0.leader_robot.arm: panda_201
+  - /hardware/robot/franka_panda/hand@teleoperation_pairs.0.leader_robot.gripper: panda_201
+  - /hardware/robot/franka_panda/arm@teleoperation_pairs.0.follower_robot.arm: panda_202
+  - /hardware/robot/franka_panda/hand@teleoperation_pairs.0.follower_robot.gripper: panda_202
+  - /hardware/camera/depthai@continuous_devices.0: 202_right_cam
+  - /hardware/camera/depthai@continuous_devices.1: 202_wrist_cam
+  - /hardware/camera/depthai@continuous_devices.2: 202_front_cam
+  - /hardware/sensor/digit@discrete_devices.0: 202_left_tactile
+  - /hardware/sensor/digit@discrete_devices.1: 202_right_tactile
+  - _self_
+
+# General Data Collection Settings
+data_dir: "/home/kkuryshev/audio-pipeline/data/basketball_06_13/"
+teleoperation_type: "JOINT_SPACE"
+capture_interval: 0.05  # 20Hz robot state capture
+initial_robot_sync: false
+
+# Teleoperation pairs of leader and follower
+teleoperation_pairs:
+  "0":
+    _target_: collect_data.TeleoperationPair
+    leader_robot: 
+      _target_: collect_data.Robot
+      name: "201 leader"
+      arm:
+        control_type:
+          _target_: real_robot_env.robot.hardware_franka.ControlType.__getitem__
+          name: HUMAN_CONTROL
+    follower_robot:
+      _target_: collect_data.Robot
+      name: "202 follower"
+      arm:
+        control_type:
+          _target_: real_robot_env.robot.hardware_franka.ControlType.__getitem__
+          name: IMITATION_CONTROL
+
+# Devices
+continuous_devices:
+  "0":
+    _target_: real_robot_env.robot.hardware_cameras.AsynchronousCamera
+    camera_class:
+      _target_: hydra.utils.get_class
+      path: real_robot_env.robot.hardware_depthai.DepthAI
+  "1":
+    _target_: real_robot_env.robot.hardware_cameras.AsynchronousCamera
+    camera_class:
+      _target_: hydra.utils.get_class
+      path: real_robot_env.robot.hardware_depthai.DepthAI
+  "2":
+    _target_: real_robot_env.robot.hardware_cameras.AsynchronousCamera
+    camera_class:
+      _target_: hydra.utils.get_class
+      path: real_robot_env.robot.hardware_depthai.DepthAI

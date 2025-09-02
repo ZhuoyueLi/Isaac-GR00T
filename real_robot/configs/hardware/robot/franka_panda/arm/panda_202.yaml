@@ -1,0 +1,5 @@
+_target_: real_robot_env.robot.hardware_franka.FrankaArm
+name: "Panda 202 Arm"
+ip_address: "141.3.53.63"
+port: 50053
+#default_reset_pose: [0.2719, -0.5165, 0.2650, -1.6160, -0.0920, 1.6146, -1.9760]

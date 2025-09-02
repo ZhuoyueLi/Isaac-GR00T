@@ -1,0 +1,38 @@
+b5s20:
+    ckpt 2000:
+        rp 10:
+            3 (can recover)     2       1
+        rp 15:
+            0                   0       0
+        rp 20:
+            3                   0       0
+    ckpt 4000:
+        rp10:
+            4                   0       0
+        rp15:
+            2                   0       0
+    ckpt 6000:
+        rp10: 
+
+
+b10s40:
+    ckpt 40000:
+        cp_15:
+            3
+        cp_20:
+
+
+
+
+
+open the oven:
+    collect the data left botom corner recvover
+    miss recover
+
+
+
+
+left  mid  right
+8      7     5
+
+4            4

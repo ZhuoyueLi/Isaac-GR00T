@@ -1,0 +1,21 @@
+_target_: 'kitchen_eval.EvaluationApp'
+
+# Agent Client
+agent:
+  _target_: "gr00t.eval.robot.RobotInferenceClient"
+  # host: 2a00:1398:2:8810:5f24:471c:1d4b:c518 
+  host: "127.0.0.1" 
+# Environment Client
+env:
+  _target_: "src.clients.envs.rr_client.RREnvClient"
+  host: "127.0.0.1" 
+  port: 6060
+
+# Tasks
+task_map:
+  _target_: src.kitchen.map_task #todo:need to be form
+  _partial_: True
+tasks:
+  - name: "pick up the eraser from the table and put it in a bowl"
+    subtasks: ['pick up the eraser from the table and put it in a bowl']
+  

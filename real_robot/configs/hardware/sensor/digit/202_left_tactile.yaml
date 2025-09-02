@@ -1,0 +1,3 @@
+_target_: real_robot_env.robot.hardware_digit.TactileDigit
+device_id: "D20049"
+name: "left_tactile"

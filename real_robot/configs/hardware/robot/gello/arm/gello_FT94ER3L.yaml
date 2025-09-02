@@ -1,0 +1,4 @@
+_target_: real_robot_env.robot.hardware_gello.GelloArm
+name: "Gello FT94ER3L Arm"
+host: "127.0.0.1"
+port: 6000

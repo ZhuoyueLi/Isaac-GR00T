@@ -1,0 +1,27 @@
+# @package _global_
+defaults:
+  - /hardware/robot/franka_panda/arm@robot_arm: panda_102
+  - /hardware/robot/franka_panda/hand@robot_hand: panda_102
+  - /hardware/camera/depthai@discrete_devices.0: 102_top_cam
+  - /hardware/camera/depthai@discrete_devices.1: 102_side_cam 
+  - _self_
+
+# General env server settings
+control_mode: "JOINTS"
+host: "127.0.0.1"
+port: 6060
+
+# Robot arm and hand
+robot_arm: 
+  hz: 6
+  # Control type is set in real_robot_env
+
+# Devices
+discrete_devices:
+  "0":
+    height: 256
+    width: 256
+  "1":
+    height: 256
+    width: 256
+   

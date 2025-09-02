@@ -1,0 +1,365 @@
+_target_: 'kitchen_eval.EvaluationApp'
+
+# Agent Client
+agent:
+  _target_: "src.clients.agents.flowervla_client.FlowerVLAClient"
+  ensemble: null
+
+# agent:
+#   _target_: "src.clients.agents.octo_client.OctoClient"
+#   ensemble: true
+
+# agent:
+#   _target_: "src.clients.agents.crossformer_client.CrossformerClient"
+
+# agent:
+#   _target_: "src.clients.agents.openvla_client.OpenVLAClient"
+#   # openvla doesn't fit to gpu memory here
+#   # so I run it on kcist and use vscode forwarding feature to port forward here
+#   # you have to port forward over ssh because kcist has a firewall otherwise
+#   server_url: "http://localhost:8000/act"
+
+# Environment Client
+env:
+  _target_: "src.clients.envs.rr_client.RREnvClient"
+  host: "127.0.0.1"
+  port: 6060
+
+# Tasks
+task_map:
+  _target_: src.kitchen.map_task
+  _partial_: True
+# task_transforms:
+#   single_tasks:
+#     repeat: 2
+tasks:
+  # - "open ice box"
+  # - 'Open oven'
+  # - 'Open microwave'
+  # - 'Open the oven'
+  # - 'Open the oven'
+  # - 'Open the oven'
+  # - 'close oven door'
+
+  # - 'put the banana into the pot'
+  # - 'put the banana into the pot'
+  # - 'put the banana into the pot'
+  # - 'put the banana into the pot'
+  # - 'put the banana into the pot'
+  #- 'Pick up the basketball'
+  #- 'Move the pot into the sink'
+  #- 'Move the pot into the sink'
+  #- 'Move the pot into the sink'
+  #- 'Move the pot into the sink'
+  #- 'Move the pot into the sink'
+  # - 'put the banana into the pot'
+  # - 'put the banana into the pot'
+  # - 'put the banana into the pot'
+  # - 'put the banana into the pot'
+  # - 'put the banana into the pot'
+
+
+# goal_sequence_open_close_all = ("open_close_all", ['open_microwave', 'open_oven', 'open_ice', 'close_ice', 'close_oven', 'close_microwave'])
+# goal_sequence_stovetop_sink = ("stovetop_sink", ['banana_from_right_stove_to_sink', 'push_toaster_lever', 'pot_from_left_to_right_stove', 'pickup_toast_and_put_to_sink', 'pot_from_right_to_left_stove', 'banana_from_sink_to_right_stove'])
+# goal_sequence_oven = ("oven", ['open_oven', 'pull_oven_tray', 'banana_from_right_stove_to_oven_tray', 'push_oven_tray', 'close_oven'])
+  - name: "put_basketball_into_the_basket"
+    subtasks: ['Put the basketball into the basket.']
+  # - name: "sequence_open_close_all"
+  #   subtasks: ['open_microwave', 'open_oven', 'open_ice', 'close_ice', 'close_oven', 'close_microwave']
+  # - name: "sequence_open_close_all"
+  #   subtasks: ['open_microwave', 'open_oven', 'open_ice', 'close_ice', 'close_oven', 'close_microwave']
+
+  # - name: "sequence_stovetop_sink"
+  #   subtasks: ['banana_from_right_stove_to_sink', 'push_toaster_lever', 'pot_from_left_to_right_stove', 'pickup_toast_and_put_to_sink', 'pot_from_right_to_left_stove', 'banana_from_sink_to_right_stove']
+  # - name: "sequence_stovetop_sink"
+  #   subtasks: ['banana_from_right_stove_to_sink', 'push_toaster_lever', 'pot_from_left_to_right_stove', 'pickup_toast_and_put_to_sink', 'pot_from_right_to_left_stove', 'banana_from_sink_to_right_stove']
+  # - name: "sequence_stovetop_sink"
+  #   subtasks: ['banana_from_right_stove_to_sink', 'push_toaster_lever', 'pot_from_left_to_right_stove', 'pickup_toast_and_put_to_sink', 'pot_from_right_to_left_stove', 'banana_from_sink_to_right_stove']
+
+  # - name: "sequence_oven"
+  #   subtasks: ['open_oven', 'pull_oven_tray', 'banana_from_right_stove_to_oven_tray', 'push_oven_tray', 'close_oven']
+  # - name: "sequence_oven"
+  #   subtasks: ['open_oven', 'pull_oven_tray', 'banana_from_right_stove_to_oven_tray', 'push_oven_tray', 'close_oven']
+  # - name: "sequence_oven"
+  #   subtasks: ['open_oven', 'pull_oven_tray', 'banana_from_right_stove_to_oven_tray', 'push_oven_tray', 'close_oven']
+
+
+  # - 'banana_from_right_stove_to_sink'
+  # - 'banana_from_sink_to_right_stove'
+  # - 'banana_from_right_stove_to_sink'
+  # - 'banana_from_sink_to_right_stove'
+  # - 'banana_from_right_stove_to_sink'
+  # - 'banana_from_sink_to_right_stove'
+  # - 'banana_from_right_stove_to_sink'
+  # - 'banana_from_sink_to_right_stove'
+  # - 'banana_from_right_stove_to_sink'
+  # - 'banana_from_sink_to_right_stove'
+
+  # - 'open_microwave'
+  # - 'close_microwave'
+  # - 'open_microwave'
+  # - 'close_microwave'
+  # - 'open_microwave'
+  # - 'close_microwave'
+  # - 'open_microwave'
+  # - 'close_microwave'
+  # - 'open_microwave'
+  # - 'close_microwave'
+
+  # - 'open_oven'
+  # - 'close_oven'
+  # - 'open_oven'
+  # - 'close_oven'
+  # - 'open_oven'
+  # - 'close_oven'
+  # - 'open_oven'
+  # - 'close_oven'
+  # - 'open_oven'
+  # - 'close_oven'
+
+  # - 'open_ice'
+  # - 'close_ice'
+  # - 'open_ice'
+  # - 'close_ice'
+  # - 'open_ice'
+  # - 'close_ice'
+  # - 'open_ice'
+  # - 'close_ice'
+  # - 'open_ice'
+  # - 'close_ice'
+
+  # - 'pot_from_right_stove_to_sink'
+  # - 'pot_from_right_stove_to_sink'
+  # - 'pot_from_right_stove_to_sink'
+  # - 'pot_from_right_stove_to_sink'
+  # - 'pot_from_right_stove_to_sink'
+  # - 'pot_from_sink_to_right_stove'
+  # - 'pot_from_sink_to_right_stove'
+  # - 'pot_from_sink_to_right_stove'
+  # - 'pot_from_sink_to_right_stove'
+  # - 'pot_from_sink_to_right_stove'
+
+  # - 'pot_from_left_stove_to_sink'
+  # - 'pot_from_left_stove_to_sink'
+  # - 'pot_from_left_stove_to_sink'
+  # - 'pot_from_left_stove_to_sink'
+  # - 'pot_from_left_stove_to_sink'
+  # - 'pot_from_sink_to_left_stove'
+  # - 'pot_from_sink_to_left_stove'
+  # - 'pot_from_sink_to_left_stove'
+  # - 'pot_from_sink_to_left_stove'
+  # - 'pot_from_sink_to_left_stove'
+  
+  # - 'pot_from_left_to_right_stove'
+  # - 'pot_from_left_to_right_stove'
+  # - 'pot_from_left_to_right_stove'
+  # - 'pot_from_left_to_right_stove'
+  # - 'pot_from_left_to_right_stove'
+  # - 'pot_from_right_to_left_stove'
+  # - 'pot_from_right_to_left_stove'
+  # - 'pot_from_right_to_left_stove'
+  # - 'pot_from_right_to_left_stove'
+  # - 'pot_from_right_to_left_stove'
+  
+  # - 'push_toaster_lever'
+  # - 'push_toaster_lever'
+  # - 'push_toaster_lever'
+  # - 'push_toaster_lever'
+  # - 'push_toaster_lever'
+  # - 'pickup_toast_and_put_to_sink'
+  # - 'pickup_toast_and_put_to_sink'
+  # - 'pickup_toast_and_put_to_sink'
+  # - 'pickup_toast_and_put_to_sink'
+  # - 'pickup_toast_and_put_to_sink'
+  
+  # - 'pull_oven_tray'
+  # - 'pull_oven_tray'
+  # - 'pull_oven_tray'
+  # - 'pull_oven_tray'
+  # - 'pull_oven_tray'
+  # - 'push_oven_tray'
+  # - 'push_oven_tray'
+  # - 'push_oven_tray'
+  # - 'push_oven_tray'
+  # - 'push_oven_tray'
+
+  # - 'banana_from_right_stove_to_oven_tray'
+  # - 'banana_from_right_stove_to_oven_tray'
+  # - 'banana_from_right_stove_to_oven_tray'
+  # - 'banana_from_right_stove_to_oven_tray'
+  # - 'banana_from_right_stove_to_oven_tray'
+  # - 'banana_from_tray_to_right_stove'
+  # - 'banana_from_tray_to_right_stove'
+  # - 'banana_from_tray_to_right_stove'
+  # - 'banana_from_tray_to_right_stove'
+  # - 'banana_from_tray_to_right_stove'
+
+## 3 tasks
+
+  # - 'banana_from_right_stove_to_sink'
+  # - 'banana_from_right_stove_to_sink'
+  # - 'banana_from_right_stove_to_sink'
+  # - 'banana_from_sink_to_right_stove'
+  # - 'banana_from_sink_to_right_stove'
+  # - 'banana_from_sink_to_right_stove'
+
+  # - 'open_microwave'
+  # - 'open_microwave'
+  # - 'open_microwave'
+  # - 'close_microwave'
+  # - 'close_microwave'
+  # - 'close_microwave'
+
+  # - 'open_oven'
+  # - 'open_oven'
+  # - 'open_oven'
+  # - 'close_oven'
+  # - 'close_oven'
+  # - 'close_oven'
+
+  # - 'open_ice'
+  # - 'open_ice'
+  # - 'open_ice'
+  # - 'close_ice'
+  # - 'close_ice'
+  # - 'close_ice'
+
+  # - 'pot_from_right_stove_to_sink'
+  # - 'pot_from_right_stove_to_sink'
+  # - 'pot_from_right_stove_to_sink'
+  # - 'pot_from_sink_to_right_stove'
+  # - 'pot_from_sink_to_right_stove'
+  # - 'pot_from_sink_to_right_stove'
+
+  # - 'pot_from_left_stove_to_sink'
+  # - 'pot_from_left_stove_to_sink'
+  # - 'pot_from_left_stove_to_sink'
+  # - 'pot_from_sink_to_left_stove'
+  # - 'pot_from_sink_to_left_stove'
+  # - 'pot_from_sink_to_left_stove'
+  
+  # - 'pot_from_left_to_right_stove'
+  # - 'pot_from_left_to_right_stove'
+  # - 'pot_from_left_to_right_stove'
+  # - 'pot_from_right_to_left_stove'
+  # - 'pot_from_right_to_left_stove'
+  # - 'pot_from_right_to_left_stove'
+  
+  # - 'push_toaster_lever'
+  # - 'push_toaster_lever'
+  # - 'push_toaster_lever'
+  # - 'pickup_toast_and_put_to_sink'
+  # - 'pickup_toast_and_put_to_sink'
+  # - 'pickup_toast_and_put_to_sink'
+  
+  # - 'pull_oven_tray'
+  # - 'pull_oven_tray'
+  # - 'pull_oven_tray'
+  # - 'push_oven_tray'
+  # - 'push_oven_tray'
+  # - 'push_oven_tray'
+
+  # - 'banana_from_right_stove_to_oven_tray'
+  # - 'banana_from_right_stove_to_oven_tray'
+  # - 'banana_from_right_stove_to_oven_tray'
+  # - 'banana_from_tray_to_right_stove'
+  # - 'banana_from_tray_to_right_stove'
+  # - 'banana_from_tray_to_right_stove'
+
+
+## Lowlight tasks
+  # - 'banana_from_right_stove_to_sink'
+  # - 'banana_from_right_stove_to_sink'
+  # - 'banana_from_right_stove_to_sink'
+
+  # - 'open_microwave'
+  # - 'open_microwave'
+  # - 'open_microwave'
+
+  # - 'close_microwave'
+  # - 'close_microwave'
+  # - 'close_microwave'
+
+  # - 'open_oven'
+  # - 'open_oven'
+  # - 'open_oven'
+
+  # - 'close_oven'
+  # - 'close_oven'
+  # - 'close_oven'
+
+  # - 'open_ice'
+  # - 'open_ice'
+  # - 'open_ice'
+
+  # - 'close_ice'
+  # - 'close_ice'
+  # - 'close_ice'
+
+  # - 'pot_from_right_stove_to_sink'
+  # - 'pot_from_right_stove_to_sink'
+  # - 'pot_from_right_stove_to_sink'
+
+  # - 'pot_from_left_stove_to_sink'
+  # - 'pot_from_left_stove_to_sink'
+  # - 'pot_from_left_stove_to_sink'
+
+  # - 'push_toaster_lever'
+  # - 'push_toaster_lever'
+  # - 'push_toaster_lever'
+  
+  # - 'pull_oven_tray'
+  # - 'pull_oven_tray'
+  # - 'pull_oven_tray'
+
+## banana only
+
+  # - 'banana_from_right_stove_to_sink'
+  # - 'banana_from_right_stove_to_sink'
+  # - 'banana_from_right_stove_to_sink'
+  # - 'banana_from_sink_to_right_stove'
+  # - 'banana_from_sink_to_right_stove'
+  # - 'banana_from_sink_to_right_stove'
+
+  # - 'banana_from_right_stove_to_oven_tray'
+  # - 'banana_from_right_stove_to_oven_tray'
+  # - 'banana_from_right_stove_to_oven_tray'
+  # - 'banana_from_tray_to_right_stove'
+  # - 'banana_from_tray_to_right_stove'
+  # - 'banana_from_tray_to_right_stove'
+
+  # - 'Move the lemon to the sink'
+  # - 'Move the banana from the far, very left stove to the sink'
+  # - 'Move the glove from right stove to sink'
+  # - 'Move the glove from right stove to sink'
+  # - 'Move the glove from sink to right stove'
+  # - 'Move the glove from sink to right stove'
+  # - 'Move the glove from sink to right stove'
+
+  # - 'Move the tennis ball from right stove to sink'
+  # - 'Move the tennis ball from right stove to sink'
+  # - 'Move the tennis ball from right stove to sink'
+  # - 'Move the tennis ball from sink to right stove'
+  # - 'Move the tennis ball from sink to right stove'
+  # - 'Move the tennis ball from sink to right stove'
+
+  # - 'Move the black donut from right stove to sink'
+  # - 'Move the black donut from right stove to sink'
+  # - 'Move the black donut from right stove to sink'
+  # - 'Move the black donut from sink to right stove'
+  # - 'Move the black donut from sink to right stove'
+  # - 'Move the black donut from sink to right stove'
+
+  # - 'Move the carrot from right stove to sink'
+  # - 'Move the carrot from right stove to sink'
+  # - 'Move the carrot from right stove to sink'
+  # - 'Move the carrot from sink to right stove'
+  # - 'Move the carrot from sink to right stove'
+  # - 'Move the carrot from sink to right stove'
+
+  # - 'Move the red cup from right stove to sink'
+  # - 'Move the red cup from right stove to sink'
+  # - 'Move the red cup from right stove to sink'
+  # - 'Move the red cup from sink to right stove'
+  # - 'Move the red cup from sink to right stove'
+  # - 'Move the red cup from sink to right stove'
