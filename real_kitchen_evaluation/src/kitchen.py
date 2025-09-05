@@ -177,17 +177,16 @@ def kitchen_dataset_obs_transforms_apr25(obs, size=(256,256)):
             "state.gripper_state": obs["gripper_width"][None, :],
             "state.joint_pos": obs["joint_pos"][None, :],
 
-            # "annotation.human.action.task_description": ["pick up the green pepper from the table and put it in a bowl"],
+            "annotation.human.action.task_description": ["pick up the green pepper from the table and put it in a bowl"],
             # "annotation.human.action.task_description": ["pick up the green pepper and put it in the hand"],
             # "annotation.human.action.task_description": ["pick up the eraser from bowl and put it in the hand"],
-
             # "annotation.human.action.task_description": ["pick up the cups and stack them together"],
             # "annotation.human.action.task_description": ["pick up the eraser and then remove black marks"],
             # "annotation.human.action.task_description": ["stack the blue cup, then the yellow cup,then the green cup at the specific location"],
 
 
             # "annotation.human.action.task_description": ["pick up the eraser and put it on the hand"],
-            "annotation.human.action.task_description": ["pick up the eraser from the table and put it in a bowl"],
+            # "annotation.human.action.task_description": ["pick up the eraser from the table and put it in a bowl"],
             # "annotation.human.action.task_description": ["pick up the green pepper and put it on the hand"],
 
             # "annotation.human.action.task_description": ["pick up the eraser from the table and put it in a bowl, pick up the eraser and then remove black marks"],

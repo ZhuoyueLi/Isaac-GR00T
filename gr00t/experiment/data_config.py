@@ -677,7 +677,7 @@ class Gr1ArmsWaistDataConfig(Gr1ArmsOnlyDataConfig):
 class IRLSinglePandaGripperDataConfig(BaseDataConfig):
     video_keys = [
         "video.ego_view"
-        "video.second_view"
+        # "video.second_view"
     ]
     state_keys = [
         "state.joint_pos",

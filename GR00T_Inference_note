@@ -1,0 +1,26 @@
+main folder:/home/irl-admin/LZY/Isaac-GR00T
+
+
+1.env server:
+conda activate uha_real_robot_Gr00t
+cd /home/irl-admin/LZY/Isaac-GR00T/real_robot
+python launch_env_server.py +env_server=panda_102_gr00t
+
+
+2.agent server:
+conda activate gr00t
+cd /home/irl-admin/LZY/Isaac-GR00T/scripts
+python inference_service.py --server --model_path /home/irl-admin/LZY/Isaac-GR00T/checkpoints/checkpoint-40000
+
+3.evaluation:
+conda activate gr00t
+cd /home/irl-admin/LZY/Isaac-GR00T/real_kitchen_evaluation
+python kitchen_eval.py
+
+To change the language instruction:
+/home/irl-admin/LZY/Isaac-GR00T/real_kitchen_evaluation/src/kitchen.py
+in kitchen_dataset_obs_transforms_apr25(obs, size=(256,256))
+change "annotation.human.action.task_description":
+also change tasks in follow yaml for output log:
+/home/irl-admin/LZY/Isaac-GR00T/real_kitchen_evaluation/config/gr00t_eval.yaml
+

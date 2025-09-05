@@ -115,7 +115,7 @@ if __name__ == "__main__":
         # - action: action.waist: (16, 3)
         obs = {
             "video.ego_view": np.random.randint(0, 256, (1, 256, 256, 3), dtype=np.uint8),
-            "video.second_view": np.random.randint(0, 256, (1, 256, 256, 3), dtype=np.uint8),
+            # "video.second_view": np.random.randint(0, 256, (1, 256, 256, 3), dtype=np.uint8),
             "state.gripper_state": np.random.rand(1, 1),
             "state.joint_pos": np.random.rand(1, 7),
             # "state.joint_vel": np.random.rand(1, 7),

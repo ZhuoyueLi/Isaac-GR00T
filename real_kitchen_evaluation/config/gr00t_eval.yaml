@@ -16,6 +16,6 @@ task_map:
   _target_: src.kitchen.map_task #todo:need to be form
   _partial_: True
 tasks:
-  - name: "pick up the eraser from the table and put it in a bowl"
-    subtasks: ['pick up the eraser from the table and put it in a bowl']
+  - name: "stack the blue cup, then the yellow cup,then the green cup at the specific location"
+    subtasks: ['stack the blue cup, then the yellow cup,then the green cup at the specific location']
   
